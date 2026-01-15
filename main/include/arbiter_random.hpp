@@ -18,6 +18,14 @@ struct ArbiterState {
     }
 };
 
+// 🔴 AGREGAR ESTA FUNCIÓN: Sobrecarga del operador << para ArbiterState
+inline std::ostream& operator<<(std::ostream& os, const ArbiterState& s) {
+    os << "[ArbiterState ready=" << s.ready
+       << ", actions_count=" << s.actions.size()
+       << "]";
+    return os;
+}
+
 class arbiter_random : public Atomic<ArbiterState> {
 public:
     Port<FightAction> inA;

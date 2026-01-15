@@ -19,7 +19,6 @@ struct FightAction
         : fighter_id(f), tech(t) {}
 };
 
-// 🔴 ESTO ES LO QUE FALTABA - Asegúrate que exista
 inline std::ostream &operator<<(std::ostream &os, const FightAction &a)
 {
     os << "[FightAction fighter=" << a.fighter_id
@@ -41,6 +40,9 @@ struct FightUpdate
     std::string global_state;
     bool success = false;
     bool finished = false;
+    int my_points = 0;     // 🔴 NUEVO: Puntos del luchador
+    int opp_points = 0;    // 🔴 NUEVO: Puntos del oponente
+    double time_remaining = 0.0; // 🔴 NUEVO: Tiempo restante
 
     FightUpdate() = default;
 
@@ -63,6 +65,9 @@ inline std::ostream &operator<<(std::ostream &os, const FightUpdate &u)
        << ", opp_pos=" << u.opp_pos
        << ", success=" << u.success
        << ", finished=" << u.finished
+       << ", my_points=" << u.my_points
+       << ", opp_points=" << u.opp_points
+       << ", time_remaining=" << u.time_remaining
        << "]";
     return os;
 }
